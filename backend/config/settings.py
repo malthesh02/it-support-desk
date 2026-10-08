@@ -14,9 +14,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key-fallback-123456789
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
-    if host.strip()
+    'it-support-desk-api-1hj1.onrender.com',
+    'localhost',
+    '127.0.0.1',
 ]
 if 'testserver' not in ALLOWED_HOSTS and DEBUG:
     ALLOWED_HOSTS.append('testserver')
