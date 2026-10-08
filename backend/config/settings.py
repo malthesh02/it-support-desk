@@ -80,6 +80,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database Configuration (MySQL 8.0)
+# Database Configuration (MySQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -91,6 +92,9 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'ssl': {
+                'ca': os.path.join(BASE_DIR, 'ca.pem'),
+            },
         },
     }
 }
