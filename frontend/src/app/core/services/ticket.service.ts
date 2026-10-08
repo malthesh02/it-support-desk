@@ -16,9 +16,11 @@ import {
   providedIn: 'root',
 })
 export class TicketService {
-  private readonly API_URL = 'http://127.0.0.1:8000/api/v1/tickets';
+  // private readonly API_URL = 'http://127.0.0.1:8000/api/v1/tickets';
 
-  constructor(private http: HttpClient) {}
+  private readonly API_URL = 'https://it-support-desk-api-1hj1.onrender.com/api/v1/tickets';
+
+  constructor(private http: HttpClient) { }
 
   getTickets(filters?: {
     status?: string;

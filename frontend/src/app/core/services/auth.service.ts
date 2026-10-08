@@ -8,7 +8,12 @@ import { AuthUserInfo, LoginRequest, LoginResponse, RegisterRequest, TokenRefres
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'http://127.0.0.1:8000/api/v1/auth';
+  // private readonly API_URL = 'http://127.0.0.1:8000/api/v1/auth';
+
+
+  private readonly API_URL = 'https://it-support-desk-api-1hj1.onrender.com/api/v1/auth';
+
+
   private readonly ACCESS_TOKEN_KEY = 'it_desk_access_token';
   private readonly REFRESH_TOKEN_KEY = 'it_desk_refresh_token';
   private readonly USER_KEY = 'it_desk_user';
@@ -25,7 +30,7 @@ export class AuthService {
   );
   readonly isEmployee = computed(() => this.currentUser()?.role === 'EMPLOYEE');
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.API_URL}/login/`, credentials).pipe(
@@ -81,8 +86,8 @@ export class AuthService {
     const refresh = this.getRefreshToken();
     if (refresh) {
       this.http.post(`${this.API_URL}/logout/`, { refresh }).subscribe({
-        next: () => {},
-        error: () => {},
+        next: () => { },
+        error: () => { },
       });
     }
 

@@ -10,13 +10,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 # Security Settings
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key-fallback-1234567890')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key-fallback-1234567890')
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 ALLOWED_HOSTS = [
-    'it-support-desk-api-1hj1.onrender.com',
-    'localhost',
-    '127.0.0.1',
+    host.strip()
+    for host in os.getenv(
+        'ALLOWED_HOSTS',
+        'localhost,127.0.0.1,testserver'
+    ).split(',')
+    if host.strip()
 ]
 if 'testserver' not in ALLOWED_HOSTS and DEBUG:
     ALLOWED_HOSTS.append('testserver')

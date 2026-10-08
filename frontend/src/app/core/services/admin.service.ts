@@ -20,9 +20,9 @@ export interface AuditLogItem {
   providedIn: 'root',
 })
 export class AdminService {
-  private readonly API_BASE = 'http://127.0.0.1:8000/api/v1';
+  private readonly API_BASE = 'https://it-support-desk-api-1hj1.onrender.com/api/v1';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // User Management
   getUsers(params?: { search?: string; role?: string }): Observable<any> {

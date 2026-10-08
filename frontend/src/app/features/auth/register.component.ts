@@ -264,7 +264,12 @@ export class RegisterComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.http.get<any>('http://127.0.0.1:8000/api/v1/departments/').subscribe({
+
+
+    // this.http.get<any>('http://127.0.0.1:8000/api/v1/departments/')
+
+
+    this.http.get<any>('http://it-support-desk-api-1hj1.onrender.com/api/v1/departments/').subscribe({
       next: (depts) => {
         const list = Array.isArray(depts) ? depts : depts?.results || [];
         this.departments.set(list);
@@ -272,6 +277,7 @@ export class RegisterComponent implements OnInit {
       error: (err) => {
         console.warn('Could not load departments:', err);
       },
+
     });
   }
 

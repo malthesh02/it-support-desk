@@ -7,9 +7,12 @@ import { Category, SubCategory, SlaPolicy } from '../models/category.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private readonly API_URL = 'http://127.0.0.1:8000/api/v1';
+  // private readonly API_URL = 'http://127.0.0.1:8000/api/v1';
 
-  constructor(private http: HttpClient) {}
+
+  private readonly API_URL = 'https://it-support-desk-api-1hj1.onrender.com/api/v1';
+
+  constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<{ results: Category[] } | Category[]>(`${this.API_URL}/categories/`).pipe(
